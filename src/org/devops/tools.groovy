@@ -1,7 +1,7 @@
 package org.devops
 
 // 打印content内容
-def printmsg(value){
+def printmsg(value,color){
   colors = ['red'   : "\033[40;31m >>>>>>>>>>>${value}<<<<<<<<<<< \033[0m",
               'blue'  : "\033[47;34m ${value} \033[0m",
               'green' : "[1;32m>>>>>>>>>>${value}>>>>>>>>>>[m",
