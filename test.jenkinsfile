@@ -23,7 +23,7 @@ stages{
             input id: 'Judge1', message: '是否继续?', ok: '是', parameters: [choice(choices: ['a', 'b'], description: '', name: 'judge1-condition')], submitter: 'admin'
             script{
                 println("获取代码")
-                mytools.printmsg('this is library!')
+                mytools.printmsg('this is library!', 'green')
             }
         }
     }
