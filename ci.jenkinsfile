@@ -33,5 +33,13 @@ pipeline{
         }
       }
     }
+    stage("npmbuild"){
+      steps{
+        script{
+          npmhome = tool "NPM"
+          sh "export NODE_HOME=${npmhome} && PATH=\$NODE_HOME/bin:\$PATH && ${npmhome}/bin/node ${build_command}"
+        }
+      }
+    }
   }
 }
