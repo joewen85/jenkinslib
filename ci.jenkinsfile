@@ -3,8 +3,8 @@
 @Library('jenkinslib@main') _
 def build = new org.devops.build()
 
-String build_command = "${env.buildcommand}"
-String build_type = "${env.buildtype}"
+String buildcommand = "${env.buildcommand}"
+String buildtype = "${env.buildtype}"
 pipeline{
   agent{ node{ label "master"}  }
   stages{
