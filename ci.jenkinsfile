@@ -1,16 +1,23 @@
 #!groovy
 
-String mvn_command = "${env.mvn_command}"
+String build_command = "${env.mvn_command}"
 
 pipeline{
   agent{ node{ label "master"}  }
   stages{
-    stage("build"){
+    stage("mavenbuild"){
       steps{
         script{
-          println(mvn_command)
           mvnhome = tool "M3"
-          sh "${mvnhome}/bin/mvn ${mvn_command}"
+          sh "${mvnhome}/bin/mvn ${build_command}"
+        }
+      }
+    }
+    stage("antbuild"){
+      steps{
+        script{
+          anthome = tool "ANT"
+          sh "${anthome}/bin/ant ${build_command}"
         }
       }
     }
