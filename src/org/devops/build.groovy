@@ -7,7 +7,7 @@ def Build(buildtype, buildcommand){
   buildhome = tool buildtools[buildtype]
 
   if (buildtype=="npm"){
-    sh "export NODE_HOME=${buildhome} && PATH=\$NODE_HOME/bin:\$PATH && ${buildhome}/bin/${buildtype} ${build_command}"
+    sh "export NODE_HOME=${buildhome} && PATH=\$NODE_HOME/bin:\$PATH && ${buildhome}/bin/${buildtype} ${buildcommand}"
   } else {
     sh "${buildhome}/bin/${buildtype} ${buildcommand}"
   } 
