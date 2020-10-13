@@ -3,7 +3,7 @@
 @Library('jenkinslib@main') _
 def build = new org.devops.build()
 
-String build_command = "${env.mvn_command}"
+// String build_command = "${env.mvn_command}"
 // String buildtype = "${env.buildtype}"
 pipeline{
   agent{ node{ label "master"}  }
@@ -11,7 +11,7 @@ pipeline{
     stage("build"){
       steps{
         script{
-          build.Build(buildtype, build_command)
+          build.Build(buildtype, buildcommand)
         }
       }
     }
