@@ -4,7 +4,7 @@
 def build = new org.devops.build()
 
 String build_command = "${env.mvn_command}"
-String buildtype = "${env.buildtype}"
+// String buildtype = "${env.buildtype}"
 pipeline{
   agent{ node{ label "master"}  }
   stages{
