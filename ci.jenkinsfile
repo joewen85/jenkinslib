@@ -1,6 +1,6 @@
 #!groovy
 
-
+String mvn_command = ${env.mvn_command}
 pipeline{
   agent{ node{ label "master"}  }
   stages{
@@ -8,7 +8,7 @@ pipeline{
       steps{
         script{
           mvnhome = tool "M3"
-          sh "${mvnhome}/bin/mvn -v"
+          sh "${mvnhome}/bin/mvn ${mvn_command}"
         }
       }
     }
