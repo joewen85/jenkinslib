@@ -13,7 +13,7 @@ pipeline{
         script{
           println("${build_command}")
           println("${build_type}")
-          build.Build(build_type, build_command)
+          build.Build(buildtype, buildcommand)
         }
       }
     }
