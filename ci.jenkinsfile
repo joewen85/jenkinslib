@@ -11,8 +11,8 @@ pipeline{
     stage("build"){
       steps{
         script{
-          println("${build_command}")
-          println("${build_type}")
+          println("${buildcommand}")
+          println("${buildtype}")
           build.Build(buildtype, buildcommand)
         }
       }
