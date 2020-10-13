@@ -1,6 +1,7 @@
 #!groovy
 
 @Library('jenkinslib@main') _
+def build = new org.devops.build()
 String build_command = "${env.mvn_command}"
 String buildtyep = "${env.buildtype}"
 pipeline{
