@@ -13,19 +13,19 @@ pipeline{
         }
       }
     }
-    stage("antbuild"){
-      steps{
-        script{
-          anthome = tool "ANT"
-          sh "${anthome}/bin/ant ${build_command}"
-        }
-      }
-    }
     stage("gradlebuild"){
       steps{
         script{
           gradlehome = tool "GRADLE"
           sh "${gradlehome}/bin/gradle ${build_command}"
+        }
+      }
+    }
+    stage("antbuild"){
+      steps{
+        script{
+          anthome = tool "ANT"
+          sh "${anthome}/bin/ant ${build_command}"
         }
       }
     }
