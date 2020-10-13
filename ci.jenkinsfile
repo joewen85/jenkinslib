@@ -1,6 +1,7 @@
 #!groovy
 
-String mvn_command = ${env.mvn_command}
+String mvn_command = "${env.mvn_command}"
+
 pipeline{
   agent{ node{ label "master"}  }
   stages{
