@@ -1,45 +1,45 @@
 #!groovy
 
+@Library('jenkinslib@main') _
 String build_command = "${env.mvn_command}"
-
+String buildtyep = "${env.buildtype}"
 pipeline{
   agent{ node{ label "master"}  }
   stages{
-    stage("mavenbuild"){
+    stage("build"){
       steps{
         script{
-          mvnhome = tool "M3"
-          sh "${mvnhome}/bin/mvn ${build_command}"
+          build.Build(buildtype, build_command)
         }
       }
     }
-    stage("antbuild"){
-      steps{
-        script{
-          try {
-            anthome = tool "ANT"
-            sh "${anthome}/bin/ant ${build_command}"
-          } catch(e){
-            println(e)
-          }
-        }
-      }
-    }
-    stage("gradlebuild"){
-      steps{
-        script{
-          gradlehome = tool "GRADLE"
-          sh "${gradlehome}/bin/gradle ${build_command}"
-        }
-      }
-    }
-    stage("npmbuild"){
-      steps{
-        script{
-          npmhome = tool "NPM"
-          sh "export NODE_HOME=${npmhome} && PATH=\$NODE_HOME/bin:\$PATH && ${npmhome}/bin/node ${build_command}"
-        }
-      }
-    }
+    // stage("antbuild"){
+    //   steps{
+    //     script{
+    //       try {
+    //         anthome = tool "ANT"
+    //         sh "${anthome}/bin/ant ${build_command}"
+    //       } catch(e){
+    //         println(e)
+    //       }
+    //     }
+    //   }
+    // }
+    // stage("gradlebuild"){
+    //   steps{
+    //     script{
+    //       gradlehome = tool "GRADLE"
+    //       sh "${gradlehome}/bin/gradle ${build_command}"
+    //     }
+    //   }
+    // }
+    // stage("npmbuild"){
+    //   steps{
+    //     script{
+    //       npmhome = tool "NPM"
+    //       sh "export NODE_HOME=${npmhome} && PATH=\$NODE_HOME/bin:\$PATH && ${npmhome}/bin/node ${build_command}"
+    //     }
+    //   }
+    // }
   }
 }
