@@ -1,10 +1,15 @@
 #!groovy
 
 @Library('jenkinslib@main') _
+
 def build = new org.devops.build()
+def deploy = new org.devops.deploy()
 
 String build_command = "${env.buildcommand}"
 String build_type = "${env.buildtype}"
+String host = "${env.host}"
+String func = "${env.func}"
+
 pipeline{
   agent{ node{ label "master"}  }
   stages{
@@ -14,6 +19,13 @@ pipeline{
           println("${build_command}")
           println("${build_type}")
           build.Build(build_type, build_command)
+        }
+      }
+    }
+    stage('deploy'){
+      steps{
+        script{
+          deploy.ansibledeploy(host, func)
         }
       }
     }
