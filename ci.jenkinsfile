@@ -29,8 +29,6 @@ pipeline{
       steps{
         script{
           tools.printmsg("构建","green")
-          println("${build_command}")
-          println("${build_type}")
           build.Build(build_type, build_command)
         }
       }
