@@ -9,10 +9,20 @@ String build_command = "${env.buildcommand}"
 String build_type = "${env.buildtype}"
 String host = "${env.host}"
 String func = "${env.func}"
+String srcurl = "{env.srcurl}"
+String branchname = "{env.branchname}"
 
 pipeline{
   agent{ node{ label "master"}  }
   stages{
+    stage("checkout"){
+      steps{
+        script{
+          checkout([$class: 'GitSCM', branches: [[name: "${branchname}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ed4a6253-a96c-49ee-9e31-91450dce2556', url: "${srcurl}"]]])
+        }
+      }
+    }
+    
     stage("build"){
       steps{
         script{
