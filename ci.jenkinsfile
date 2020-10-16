@@ -10,7 +10,7 @@ String build_command = "${env.buildcommand}"
 String build_type = "${env.buildtype}"
 String host = "${env.host}"
 String func = "${env.func}"
-String srcurl = "{env.srcurl}"
+String srcurl = "${env.srcurl}"
 String branchname = "{env.branchname}"
 
 pipeline{
