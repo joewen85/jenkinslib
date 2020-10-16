@@ -4,6 +4,7 @@
 
 def build = new org.devops.build()
 def deploy = new org.devops.deploy()
+def tools = new org.devops.tools()
 
 String build_command = "${env.buildcommand}"
 String build_type = "${env.buildtype}"
@@ -18,6 +19,7 @@ pipeline{
     stage("checkout"){
       steps{
         script{
+          tools.printmsg("检出分支","green")
           checkout([$class: 'GitSCM', branches: [[name: "${branchname}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ed4a6253-a96c-49ee-9e31-91450dce2556', url: "${srcurl}"]]])
         }
       }
@@ -26,6 +28,7 @@ pipeline{
     stage("build"){
       steps{
         script{
+          tools.printmsg("构建","green")
           println("${build_command}")
           println("${build_type}")
           build.Build(build_type, build_command)
