@@ -20,7 +20,7 @@ pipeline{
       steps{
         script{
           tools.printmsg("检出分支","green")
-          checkout([$class: 'GitSCM', branches: [[name: "${branchname}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ed4a6253-a96c-49ee-9e31-91450dce2556', url: "${srcurl}"]]])
+          checkout([$class: 'GitSCM', branches: [[name: "*/${branchname}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ed4a6253-a96c-49ee-9e31-91450dce2556', url: "${srcurl}"]]])
         }
       }
     }
